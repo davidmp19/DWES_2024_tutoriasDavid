@@ -78,7 +78,7 @@ public class PlanController {
 	
 		model.setViewName("formPlan");
 		
-		
+		 
 		return model;
 	}	
 

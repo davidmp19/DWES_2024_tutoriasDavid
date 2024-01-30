@@ -3,7 +3,6 @@ package com.spring.start.h2.actividad;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.spring.start.h2.enmarca.Enmarca;
 import com.spring.start.h2.plan.Plan;
 
@@ -27,8 +26,6 @@ public class Actividad {
 	@OneToMany(
 			targetEntity=Enmarca.class,
 			mappedBy="actividad")
-	
-	@JsonBackReference
 	private Set<Plan> planes = new HashSet<>();
 
 	public long getId() {

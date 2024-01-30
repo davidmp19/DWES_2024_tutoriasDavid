@@ -40,15 +40,17 @@ public class PlanController {
 
 		ModelAndView model = new ModelAndView();
 		model.setViewName("planes");
-		
 		List<Plan> planes = (List<Plan>) planDao.findAll();
+		model.addObject("plan", new Plan());
+		model.addObject("cursos", cursoDao.findAll());
+		model.addObject("tutores", tutorDao.getTutoresNoEnlazados());
 		model.addObject("planes", planes);
-		
+
 		return model;
 	}
 	
 
-	
+
 	
 	
 	@GetMapping("/plan/{id}")
@@ -70,15 +72,13 @@ public class PlanController {
 	@GetMapping("/plan/add")
 	public ModelAndView addPlan() {
 				
+
 		ModelAndView model = new ModelAndView();
-		
+		model.setViewName("formPlan");
 		model.addObject("plan", new Plan());
 		model.addObject("cursos", cursoDao.findAll());
 		model.addObject("tutores", tutorDao.getTutoresNoEnlazados());
-	
-		model.setViewName("formPlan");
-		
-		 
+
 		return model;
 	}	
 
@@ -151,13 +151,17 @@ public class PlanController {
 	
 	
 	@PostMapping("/plan/save")
-	public ModelAndView formTutoria(@ModelAttribute Plan plan) {
-		Tutor tutor=plan.getTutor();
-		tutor.setPlan(plan);
-		planDao.save(plan);
-		
+	public ModelAndView formTutoria(@ModelAttribute Plan plan) {	
 		ModelAndView model = new ModelAndView();
-		model.setViewName("redirect:/plan");	
+		Tutor tutor=plan.getTutor();
+		if (tutor != null) {
+			tutor.setPlan(plan);
+			planDao.save(plan);
+		}
+		model.addObject("planNuevo", plan);
+		
+	
+		model.setViewName("redirect:/plan/nuevo/"+plan.getId());	
 		
 		return model;
 	}	

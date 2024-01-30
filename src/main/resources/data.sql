@@ -25,7 +25,7 @@ insert into Actividad(obligatoria,nombre,descripcion) values (false,'Deporte4','
 insert into enmarca(idActividad,idPlan,fecha)values(1,1,'01-01-2024');
 insert into enmarca(idActividad,idPlan,fecha)values(2,2,'02-02-2024');
 insert into enmarca(idActividad,idPlan,fecha)values(3,3,'03-03-2024');
-insert into enmarca(idActividad,idPlan,fecha)values(4,4,'04-04-2024');
+
 
 
 

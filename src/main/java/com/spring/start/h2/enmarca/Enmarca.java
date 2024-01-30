@@ -1,42 +1,42 @@
 package com.spring.start.h2.enmarca;
 
-
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.spring.start.h2.actividad.Actividad;
 import com.spring.start.h2.plan.Plan;
 
 
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.MapsId;
+
 
 @Entity
 public class Enmarca {
+  
 	
-	@EmbeddedId EnmarcaKey id; 
+	 @Id 
+	 @GeneratedValue(strategy=GenerationType.IDENTITY)
+	 private long id;
+
 	
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@MapsId("idActividad") 
 	@JoinColumn(name = "idactividad") 
-	@JsonManagedReference
 	Actividad actividad; 
 	@ManyToOne 
-	@MapsId("idPlan") 
 	@JoinColumn(name = "idplan") 
-	@JsonManagedReference
 	Plan plan;
 	
 	private String fecha;
 	
-	public EnmarcaKey getId() {
+	
+	public long getId() {
 		return id;
 	}
-	public void setId(EnmarcaKey id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public Actividad getActividad() {

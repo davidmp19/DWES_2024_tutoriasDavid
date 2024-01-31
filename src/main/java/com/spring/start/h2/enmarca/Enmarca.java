@@ -25,10 +25,10 @@ public class Enmarca {
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idactividad") 
-	Actividad actividad; 
+	private Actividad actividad; 
 	@ManyToOne 
 	@JoinColumn(name = "idplan") 
-	Plan plan;
+	private Plan plan;
 	
 	private String fecha;
 	

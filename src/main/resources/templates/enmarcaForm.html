@@ -27,18 +27,18 @@
 					  <li class="list-group-item list-group-item-action list-group-item-warning list-group-item d-flex justify-content-between align-items-center">
 						Plan:
 							<select class="form-control" th:field="*{plan}">
-	      						<option th:each="p:${planes}" th:value="${p.id}" th:text="${p.id}">OPCION</option>
+	      						<option th:each="p:${planes}" th:value="${p.id}" th:text="${p.nombre}">OPCION</option>
 							</select>
 					  </li>
 					  <li class="list-group-item list-group-item-action list-group-item-warning list-group-item d-flex justify-content-between align-items-center">
 						Actividad
 						 	<select class="form-control" th:field="*{actividad}">
-	      						<option th:each="a:${actividades}" th:value="${a.id}" th:text="${a.id}">OPCION</option>
+	      						<option th:each="a:${actividades}" th:value="${a.id}" th:text="${a.nombre}">OPCION</option>
 							</select>
 					  </li>
 					   <li class="list-group-item list-group-item-action list-group-item-warning list-group-item d-flex justify-content-between align-items-center">
 						Fecha
-						<input>
+						<input type="text" th:field="*{fecha}">
 					  </li>
 					</ul>
 				</p>

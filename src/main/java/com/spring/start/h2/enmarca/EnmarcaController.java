@@ -1,6 +1,7 @@
 package com.spring.start.h2.enmarca;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -57,8 +58,16 @@ public class EnmarcaController {
 		
 		
 		ModelAndView model = new ModelAndView();
+		
+		
+		Optional<Enmarca> enmarcaOptional = enmarcaDAO.findById(id);	
+		if (enmarcaOptional.isPresent()) {
+	        Enmarca enmarca = enmarcaOptional.get();
+	        enmarca.setActividad(null);
+	        enmarcaDAO.save(enmarca);
+	        enmarcaDAO.deleteById(id);
+	    }
 		model.setViewName("redirect:/enmarca");
-		enmarcaDAO.deleteById(id);	
 		return model;
 	}
 		
@@ -71,7 +80,16 @@ public class EnmarcaController {
 		ModelAndView model = new ModelAndView();
 
 		model.setViewName("redirect:/enmarca");
-		enmarcaDAO.save(enmarca);
+		  boolean asociacionExistente = enmarcaDAO.vinculados(
+		            enmarca.getPlan().getNombre(),
+		            enmarca.getActividad().getNombre()
+		    );
+
+		    if (!asociacionExistente) {
+		        enmarcaDAO.save(enmarca);
+		    }
+
+		   
 
 		return model;
 	}

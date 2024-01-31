@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.start.h2.actividad.ActividadDao;
-import com.spring.start.h2.plan.Plan;
+
 import com.spring.start.h2.plan.PlanDAO;
 
 @Controller
@@ -39,11 +39,13 @@ public class EnmarcaController {
 	public ModelAndView enmarcar() {
 				
 		ModelAndView model = new ModelAndView();
-		
+		model.setViewName("enmarcaForm");
 		model.addObject("enmarca", new Enmarca());
+		
+		
 		model.addObject("planes", planDAO.findAll());
 		model.addObject("actividades", actividadDAO.findAll());
-		model.setViewName("enmarcaForm");
+		
 		
 		 
 		return model;
@@ -56,7 +58,7 @@ public class EnmarcaController {
 		
 		ModelAndView model = new ModelAndView();
 		model.setViewName("redirect:/enmarca");
-		
+		enmarcaDAO.deleteById(id);	
 		return model;
 	}
 		

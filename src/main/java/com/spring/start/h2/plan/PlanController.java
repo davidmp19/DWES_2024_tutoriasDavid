@@ -161,7 +161,7 @@ public class PlanController {
 		model.addObject("planNuevo", plan);
 		
 	
-		model.setViewName("redirect:/plan/nuevo/"+plan.getId());	
+		model.setViewName("redirect:/plan");	
 		
 		return model;
 	}	

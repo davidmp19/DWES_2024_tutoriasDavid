@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.spring.start.h2.enmarca.Enmarca;
-import com.spring.start.h2.plan.Plan;
 
 
 import jakarta.persistence.Entity;
@@ -26,7 +25,7 @@ public class Actividad {
 	@OneToMany(
 			targetEntity=Enmarca.class,
 			mappedBy="actividad")
-	private Set<Plan> planes = new HashSet<>();
+	private Set<Enmarca> enmarca = new HashSet<>();
 
 	public long getId() {
 		return id;
@@ -60,19 +59,21 @@ public class Actividad {
 		this.descripcion = descripcion;
 	}
 
-	public Set<Plan> getPlanes() {
-		return planes;
+	public Set<Enmarca> getEnmarca() {
+		return enmarca;
 	}
 
-	public void setPlanes(Set<Plan> planes) {
-		this.planes = planes;
+	public void setEnmarca(Set<Enmarca> enmarca) {
+		this.enmarca = enmarca;
 	}
 
 	@Override
 	public String toString() {
 		return "Actividad [id=" + id + ", obligatoria=" + obligatoria + ", nombre=" + nombre + ", descripcion="
-				+ descripcion + ", planes=" + planes + "]";
+				+ descripcion + ", enmarca=" + enmarca + "]";
 	}
+
+
 	
 	
 }

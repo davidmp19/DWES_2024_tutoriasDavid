@@ -11,6 +11,8 @@ package com.spring.start.h2.plan;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.spring.start.h2.actividad.Actividad;
 import com.spring.start.h2.curso.Curso;
 import com.spring.start.h2.enmarca.Enmarca;
@@ -45,6 +47,7 @@ public class Plan {
 	
 	@ManyToOne
 	@JoinColumn(name="FK_CURSO")
+	@JsonBackReference
 	private Curso curso;
 	
 	@OneToMany(

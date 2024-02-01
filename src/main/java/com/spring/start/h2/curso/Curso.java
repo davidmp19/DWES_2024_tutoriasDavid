@@ -6,6 +6,7 @@ package com.spring.start.h2.curso;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.spring.start.h2.plan.Plan;
 
 import jakarta.persistence.CascadeType;
@@ -24,6 +25,7 @@ public class Curso {
 	private String nombre;
 	
 	@OneToMany(targetEntity=Plan.class,mappedBy="curso",cascade = CascadeType.ALL)
+	@JsonManagedReference
 	private List<Plan> planes = new ArrayList<Plan>();
 
 	

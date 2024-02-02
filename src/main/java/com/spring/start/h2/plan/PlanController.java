@@ -157,13 +157,39 @@ public class PlanController {
 		if (tutor != null) {
 			tutor.setPlan(plan);
 			planDao.save(plan);
+		}else {
+			plan.setTutor(null);
+			planDao.save(plan);
 		}
 		model.addObject("planNuevo", plan);
 		
 	
-		model.setViewName("redirect:/plan");	
+		model.setViewName("redirect:/plan/nuevo/" + plan.getId());	
 		
 		return model;
 	}	
+	@GetMapping("plan/nuevo/{id}")
+	public ModelAndView nuevoPlan(@PathVariable long id) {
+
+		ModelAndView model = new ModelAndView();
+
+		List<Plan> planes = (List<Plan>) planDao.findAll();
+
+		Plan planNuevo = planDao.findById(id).get();
+
+	
+			model.addObject("plan", new Plan());
+			model.addObject("tutores", tutorDao.getTutoresNoEnlazados());
+			model.addObject("planes", planes);
+			model.addObject("planNuevo", planNuevo);
+			model.addObject("cursos", cursoDao.findAll());
+			model.setViewName("planes");
+		
+		
+
+		
+
+		return model;
+	}
 	
 }

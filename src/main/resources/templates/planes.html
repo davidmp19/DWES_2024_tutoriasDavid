@@ -79,7 +79,7 @@
 								</select>
 							</li>
 						</ul>
-						<p><input type="submit" class="btn btn-primary" value="enviar"/></p>
+						<p><input type="submit" class="btn btn-primary" value="enviar" /></p>
 						</p>
 
 					</div>
@@ -90,44 +90,34 @@
 		</div>
 	</div>
 
-  <div class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true" th:if="${planNuevo!=null}">
-          <div class="toast-header">
-            <svg class="bd-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#007aff"></rect></svg>
-            <strong class="me-auto">Bootstrap</strong>
-            <small>Ahora mismo</small>
-            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close" th:href="@{~/plan}">
-              
-            </button>
-          </div>
-          <div class="toast-body">
-             Plan nuevo<span th:text="${planNuevo.nombre}" ></span>
-              <p>
-                Tutor:
-                <span th:text="${planNuevo.tutor?.nombre}"></span>
-              </p>
-              <p>
-                Curso:
-                <span th:text="${planNuevo.idCurso?.nombre}"></span>
-              </p>
-          </div>
-        </div>
-
-        
-      </div>
-    </div>
-
+	<div class="toast fade show" th:if="${planNuevo!=null}" role=" alert" aria-live="assertive" aria-atomic="true">
+		<div class=" toast-header">
+			<svg class="bd-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg"
+				aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+				<rect width="100%" height="100%" fill="#007aff"></rect>
+			</svg>
+			<strong class="me-auto">Bootstrap</strong>
+			<small>Ahora mismo</small>
+			<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close">
+				x
+			</button>
+		</div>
+		<div class="toast-body">
+			Plan nuevo:<span th:text="${planNuevo.nombre}"></span>
+			<p>
+				Tutor:
+				<span th:text="${planNuevo.tutor?.nombre}"></span>
+			</p>
+			<p>
+				Curso:
+				<span th:text="${planNuevo.curso?.nombre}"></span>
+			</p>
+		</div>
+	</div>
 
 
-
-
-
-
-
-
-
-
-
-
+	</div>
+	</div>
 
 
 	<!-- Optional JavaScript -->
